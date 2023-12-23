@@ -1,5 +1,6 @@
 package com.vigidriveapp.network
 
+import com.vigidriveapp.model.request.DriverRequest
 import com.vigidriveapp.model.request.LoginRequest
 import com.vigidriveapp.model.response.LoginResponse
 import retrofit2.Call
@@ -13,4 +14,9 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("/login")
     fun login(@Header("Authorization") auth: String,): Call<LoginResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("/register/driver")
+    fun register(@Body registrationData: DriverRequest): Call<Void>
+
 }

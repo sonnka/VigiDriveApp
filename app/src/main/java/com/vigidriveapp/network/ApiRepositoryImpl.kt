@@ -1,5 +1,6 @@
 package com.vigidriveapp.network
 
+import com.vigidriveapp.model.request.DriverRequest
 import com.vigidriveapp.model.request.LoginRequest
 import com.vigidriveapp.model.response.LoginResponse
 import okhttp3.OkHttpClient
@@ -24,5 +25,9 @@ class ApiRepositoryImpl : ApiRepository {
         val auth =  "Basic " + android.util.Base64.encodeToString(credentials.toByteArray(),
             android.util.Base64.NO_WRAP)
         service.login(auth).enqueue(callback)
+    }
+
+    override fun register(driver: DriverRequest, callback: Callback<Void>) {
+        service.register(driver).enqueue(callback)
     }
 }

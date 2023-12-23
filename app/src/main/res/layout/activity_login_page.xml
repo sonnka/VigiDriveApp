@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.activity.LoginPage">
 
@@ -106,6 +107,6 @@
         android:onClick="login"
         android:text="Sign in"
         android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:textSize="22dp" />
 
 </LinearLayout>
