@@ -21,5 +21,8 @@ data class AccessResponse(
     val endDateOfAccess: String?,
 
     @SerializedName("accessDuration")
-    val accessDuration: String?
+    val accessDuration: String?,
+
+    @SerializedName("isActive")
+    val isActive: Boolean
 )

@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.activity.AccessInfoPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/general"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/alata"
+        android:lines="1"
+        android:text="Access"
+        android:textColor="@color/black"
+        android:textSize="27dp" />
+
+    <TextView
+        android:id="@+id/dremail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="105dp"
+        android:fontFamily="@font/alata"
+        android:lines="1"
+        android:text="Driver email: "
+        android:textColor="@color/black"
+        android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/manemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/alata"
+        android:lines="1"
+        android:text="Manager email: "
+        android:textColor="@color/black"
+        android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/alata"
+        android:lines="1"
+        android:text="Access duration: "
+        android:textColor="@color/black"
+        android:textSize="19dp" />
+
+    <Button
+        android:id="@+id/accessButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="105dp"
+        android:backgroundTint="@color/purple_200"
+        android:fontFamily="@font/alata"
+        android:onClick="action"
+        android:text="Give/stop"
+        android:textColor="@color/white"
+        android:textSize="22dp" />
+
+</LinearLayout>

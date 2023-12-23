@@ -59,6 +59,13 @@ interface ApiService {
         @Path("driver-id") userId: Long
     ): Call<List<AccessResponse>>
 
+    @GET("/drivers/{driver-id}/accesses/{access-id}")
+    fun getAccess(
+        @Header("Authorization") token: String,
+        @Path("driver-id") userId: Long,
+        @Path("access-id") accessId: Long
+    ): Call<AccessResponse>
+
     @PATCH("/drivers/{driver-id}/accesses/{access-id}/stop")
     fun stopAccess(
         @Header("Authorization") token: String,
@@ -72,7 +79,7 @@ interface ApiService {
         @Path("driver-id") userId: Long,
         @Path("access-id") accessId: Long
     ): Call<Void>
-    
+
     @GET("/drivers/{driver-id}/health-info")
     fun getHealthInfo(
         @Header("Authorization") token: String,

@@ -53,6 +53,13 @@ interface ApiRepository {
         callback: Callback<List<AccessResponse>>
     )
 
+    fun getAccess(
+        token: String,
+        userId: Long,
+        accessId: Long,
+        callback: Callback<AccessResponse>
+    )
+
     fun stopAccess(
         token: String,
         userId: Long,

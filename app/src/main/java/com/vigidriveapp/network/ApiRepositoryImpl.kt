@@ -76,6 +76,15 @@ class ApiRepositoryImpl : ApiRepository {
         service.getInActiveAccesses(token, userId).enqueue(callback)
     }
 
+    override fun getAccess(
+        token: String,
+        userId: Long,
+        accessId: Long,
+        callback: Callback<AccessResponse>
+    ) {
+        service.getAccess(token, userId, accessId).enqueue(callback)
+    }
+
     override fun stopAccess(
         token: String,
         userId: Long,
