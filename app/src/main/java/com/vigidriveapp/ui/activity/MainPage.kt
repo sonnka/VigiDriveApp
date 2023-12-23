@@ -33,7 +33,7 @@ class MainPage : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelec
         val arguments = intent.extras
         if (arguments != null) {
             if (arguments.containsKey("userId")) {
-                userId = arguments.getString("userId")
+                userId = arguments.getLong("userId")
                 setUserId(userId!!)
             }
             if (arguments.containsKey("token")) {
@@ -49,10 +49,10 @@ class MainPage : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelec
 
 
     companion object {
-        private var userId: String? = null
+        private var userId: Long? = null
         private var token: String? = null
 
-        fun getUserId(): String? {
+        fun getUserId(): Long? {
             return userId
         }
 
@@ -63,7 +63,7 @@ class MainPage : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelec
     }
 
 
-    private fun setUserId(userIdValue: String) {
+    private fun setUserId(userIdValue: Long) {
         userId = userIdValue
     }
 

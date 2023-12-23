@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,7 @@ class ProfilePage : Fragment() {
 
     private val activity: Fragment = this@ProfilePage
     private var token: String? = null
-    private var userId: String? = null
+    private var userId: Long? = null
 
     private var firstName: TextView? = null
     private var lastName: TextView? = null
@@ -89,7 +90,7 @@ class ProfilePage : Fragment() {
 
     private fun getUser() {
 
-        apiRepository.getDriver("Bearer " + token, userId!!.toInt(), object :
+        apiRepository.getDriver("Bearer " + token, userId!!, object :
             Callback<DriverResponse> {
             override fun onResponse(
                 call: Call<DriverResponse>,
@@ -98,6 +99,7 @@ class ProfilePage : Fragment() {
                 if (response.isSuccessful) {
                     val user = response.body()
                     if (user != null) {
+                        Log.d("driver", user.toString())
                         fillData(user)
                     } else {
                         Toast.makeText(getActivity(), "Something went wrong!", Toast.LENGTH_LONG)
@@ -116,14 +118,29 @@ class ProfilePage : Fragment() {
     }
 
     fun fillData(user: DriverResponse) {
-        var date1 = LocalDateTime.parse(user.dateOfBirth.toString());
+        var date0 = "Date of birth: - "
+        var phone = "Phone number: - "
+        var emergency = "Emergency number: - "
+
+        if (user.dateOfBirth != null) {
+            var date1 = LocalDateTime.parse(user.dateOfBirth.toString())
+            date0 = "Date of birth: " + date1.format(DateTimeFormatter.ofPattern("dd/MM/YYYY"))
+        }
+
+        if (user.phoneNumber != null) {
+            phone = "Phone number: " + user.phoneNumber
+        }
+
+        if (user.emergencyContact != null) {
+            emergency = "Emergency number: " + user.emergencyContact
+        }
 
         firstName!!.text = user.firstName
         lastName!!.text = user.lastName
         email!!.text = "Email: " + user.email
-        date!!.text = "Date of birth: " + date1.format(DateTimeFormatter.ofPattern("dd/MM/YYYY"))
-        phoneNumber!!.text = "Phone number: " + user.phoneNumber
-        phoneNumber!!.text = "Emergency number: " + user.emergencyContact
+        date!!.text = date0
+        phoneNumber!!.text = phone
+        emergencyNumber!!.text = emergency
 
         val imageBytes = Base64.decode(user.avatar, Base64.DEFAULT)
         val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)

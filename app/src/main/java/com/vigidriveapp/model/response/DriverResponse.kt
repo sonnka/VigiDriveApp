@@ -17,9 +17,6 @@ data class DriverResponse(
     @SerializedName("email")
     val email: String?,
 
-    @SerializedName("avatar")
-    val avatar: String?,
-
     @SerializedName("dateOfBirth")
     val dateOfBirth: String?,
 
@@ -27,6 +24,9 @@ data class DriverResponse(
     val phoneNumber: String?,
 
     @SerializedName("emergencyContact")
-    val emergencyContact: String?
+    val emergencyContact: String?,
+
+    @SerializedName("avatar")
+    val avatar: String?
 
 )

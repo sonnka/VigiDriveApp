@@ -40,8 +40,6 @@ interface ApiService {
         @Body driver: UpdateDriverRequest
     ): Call<Void>
 
-
-    @Headers("Content-Type: application/json")
     @PATCH("/drivers/{driver-id}/emergency-number/{number}")
     fun updateEmergencyContact(
         @Header("Authorization") token: String,
@@ -49,20 +47,17 @@ interface ApiService {
         @Path("number") number: String
     ): Call<Void>
 
-
     @GET("/drivers/{driver-id}/accesses/active")
     fun getActiveAccesses(
         @Header("Authorization") token: String,
         @Path("driver-id") userId: Long
     ): Call<List<AccessResponse>>
 
-
     @GET("/drivers/{driver-id}/accesses/inactive")
     fun getInActiveAccesses(
         @Header("Authorization") token: String,
         @Path("driver-id") userId: Long
     ): Call<List<AccessResponse>>
-
 
     @PATCH("/drivers/{driver-id}/accesses/{access-id}/stop")
     fun stopAccess(
@@ -71,15 +66,13 @@ interface ApiService {
         @Path("access-id") accessId: Long
     ): Call<Void>
 
-
     @POST("/drivers/{driver-id}/accesses/{access-id}")
     fun giveAccess(
         @Header("Authorization") token: String,
         @Path("driver-id") userId: Long,
         @Path("access-id") accessId: Long
     ): Call<Void>
-
-
+    
     @GET("/drivers/{driver-id}/health-info")
     fun getHealthInfo(
         @Header("Authorization") token: String,
