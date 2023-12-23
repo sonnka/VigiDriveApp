@@ -1,32 +1,28 @@
 package com.vigidriveapp.ui.activity
 
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.vigidriveapp.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [InfoPage.newInstance] factory method to
- * create an instance of this fragment.
- */
 class InfoPage : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -34,26 +30,48 @@ class InfoPage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info_page, container, false)
+        val v: View = inflater.inflate(R.layout.fragment_info_page, container, false)
+        draw(v)
+        return v
+    }
+
+    fun draw(v: View) {
+        val pieChart: PieChart = v.findViewById(R.id.pieChart)
+
+        val entries: ArrayList<PieEntry> = ArrayList<PieEntry>()
+
+        entries.add(PieEntry(10.0f, "stress"))
+
+        val pieDataSet = PieDataSet(entries, "")
+        pieDataSet.setColors(*ColorTemplate.MATERIAL_COLORS)
+        pieDataSet.valueTextColor = Color.BLACK
+        pieDataSet.sliceSpace = 2f
+        pieDataSet.valueTextSize = 20f
+
+        val pieData = PieData(pieDataSet)
+
+        val legend = pieChart.legend
+        legend.form = Legend.LegendForm.SQUARE
+        legend.textSize = 17f
+        legend.yOffset = 20f
+        legend.setDrawInside(false)
+
+        pieChart.setEntryLabelColor(Color.BLACK)
+        pieChart.data = pieData
+        pieChart.description.isEnabled = false
+        pieChart.centerText = "Витрати\n(грн)"
+        pieChart.setCenterTextSize(20f)
+        pieChart.setCenterTextTypeface(Typeface.DEFAULT_BOLD)
+        pieChart.setCenterTextColor(Color.parseColor("#222222"))
+        pieChart.animate()
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InfoPage.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             InfoPage().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }

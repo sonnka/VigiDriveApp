@@ -45,6 +45,9 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //JWT
     implementation("com.auth0:java-jwt:3.18.1")
+    //Statistic
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    //Tests
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
