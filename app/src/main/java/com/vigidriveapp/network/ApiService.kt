@@ -32,8 +32,9 @@ interface ApiService {
         @Path("driver-id") userId: Long
     ): Call<DriverResponse>
 
+
+    @PATCH("drivers/{driver-id}")
     @Headers("Content-Type: application/json")
-    @PATCH("/drivers/{driver-id}")
     fun updateDriver(
         @Header("Authorization") token: String,
         @Path("driver-id") userId: Long,

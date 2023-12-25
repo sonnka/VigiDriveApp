@@ -94,7 +94,7 @@ class AccessInfoPage : AppCompatActivity() {
     fun fillData(access: AccessResponse) {
         driverEmail!!.setText("Driver email: " + access.driverEmail)
         managerEmail!!.setText("Manager email: " + access.managerEmail)
-        duration!!.setText("Duration: " + duration)
+        duration!!.setText("Duration: " + access.accessDuration)
     }
 
     private fun stopAccess() {

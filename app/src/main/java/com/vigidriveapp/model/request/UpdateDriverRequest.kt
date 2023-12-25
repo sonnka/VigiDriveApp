@@ -3,13 +3,13 @@ package com.vigidriveapp.model.request
 
 data class UpdateDriverRequest(
 
-    var avatar: String,
+    var dateOfBirth: String,
+
+    var phoneNumber: String,
 
     var firstName: String,
 
     var lastName: String,
 
-    var dateOfBirth: String,
-
-    var phoneNumber: String
+    var avatar: String
 )

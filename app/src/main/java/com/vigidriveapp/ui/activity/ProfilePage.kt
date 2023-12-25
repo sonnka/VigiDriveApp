@@ -19,7 +19,7 @@ import com.vigidriveapp.network.ApiRepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
@@ -123,7 +123,7 @@ class ProfilePage : Fragment() {
         var emergency = "Emergency number: - "
 
         if (user.dateOfBirth != null) {
-            var date1 = LocalDateTime.parse(user.dateOfBirth.toString())
+            var date1 = LocalDate.parse(user.dateOfBirth)
             date0 = "Date of birth: " + date1.format(DateTimeFormatter.ofPattern("dd/MM/YYYY"))
         }
 
